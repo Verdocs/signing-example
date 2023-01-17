@@ -1,46 +1,39 @@
-# Getting Started with Create React App
+This project illustrates the simplest possible usage of the Verdocs Web SDK: embedding
+a signing component in a simple app.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Setup:
+1. Create an account at [Verdocs.com](https://verdocs.com), if you have not already done so.
+2. Create a new template and upload any PDF file. It does not matter what you upload.
+3. Add two Unknown Recipients, named Buyer and Seller. For simplicity's sake, set both to act in parallel.
+4. Add at least one signature field for each recipient. (They should be color-coded differently.)
+5. Create a new envelope from the template.
+6. Set yourself as both the buyer and seller. For convenience, if you have Gmail, you can use
+   different e-mail addresses by suffixing them with `+suffix` e.g. `myemail+buyer@gmail.com` and
+   `myemail+seller@gmail.com`.
+7. When you receive the Action Required email invites, copy and paste the URL provided into the
+   code here.
 
-## Available Scripts
+Running this project:
+1. Clone this repository, or download it as a Zip file and extract it to a convenient folder.
+   Open a terminal window into this folder.
+2. You will need a recent (LTS is recommended) version of Node installed. Yarn is not
+   required, but is recommended.
+3. Run `yarn` (or `npm install` if you do not have Yarn).
 
-In the project directory, you can run:
+Then edit `src/App.tsx`. Paste the three ID components from your invite email's "Let's Go" link into
+the three fields here. For example, if your invite link was:
 
-### `npm start`
+`https://verdocs.com/view/sign/ABCD-UUID/roleName/Seller/invitation/jklm1234`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+the file should look like this:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```typescript
+export const invite = {
+  envelopeId: 'ABCD-UUID',
+  roleId: 'Seller',
+  inviteCode: 'jklm1234',
+}
+```
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Now run run `yarn dev`. This will start a dev server for this app on [http://127.0.0.1:5173/](http://127.0.0.1:5173/).
+If you navigate to this URL, you should see the signing experience.
