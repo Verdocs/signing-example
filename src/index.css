@@ -23,11 +23,29 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  margin: 0;
 }
 
+/*
+ NOTE: Your app may not need this. VerdocsSign must render in a DIV that has a predefined
+ width and height via some mechanism - flex, grid, manual layout, etc.
+*/
 #root {
   flex: 1;
   height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+/*
+ NOTE: Your app may not need these two blocks. VerdocsSign components expect a typical "reset stylesheet"
+ to be in effect in the host app.
+*/
+div {
+  display: block;
+  box-sizing: border-box;
+}
+
+input {
+  vertical-align: top;
 }
